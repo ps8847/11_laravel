@@ -1,0 +1,49 @@
+we will learn
+
+* what is blade template 
+* displaying data 
+* blade directives 
+* creating layouts in blade template 
+
+
+************************************
+
+about blade template 
+
+* blade is a template engine in laravel framework 
+* blade templating engine provides its own structure such as conditional statements and loops
+* to create a view file and save it with a .blade.php extention instead of .php extention
+
+Displaying data >>
+
+core php syntax : 
+<?php 
+echo $name ;
+?>
+
+blade template syntax :
+{{ $name }}
+
+{!! $name !!}
+
+
+Blade Conditional Directives >>
+
+@if , @elseif , @else , and @endif directives.
+@unless , @endunless directives
+@isset , @endisset directives
+
+
+Blade Looping Directives >>
+
+@for and @endfor directives
+@while and @endwhile directives 
+@foreach and @endforeach directives 
+@break and @continue 
+
+
+Other Blade Directives 
+
+for comments : {{--heyy --}}
+for including : @include
+for raw PHP : @php @endphp

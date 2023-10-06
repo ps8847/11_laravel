@@ -1,0 +1,48 @@
+Migration Commands  : 
+* php artisan make:migration create_table_name_table
+  >> php artisan make:migration create_customers_table
+
+now write this in the newly created file at 
+
+database > migrations 
+*  Schema::create('customers', function (Blueprint $table) {
+            $table->id('customer_id'); //customer_id
+            $table->string('name' , 60);
+            $table->string('email' , 100);
+            $table->enum('gender' , ['M' , 'F' , 'O'])->nullable();
+            $table->text('address');
+            $table->date('dob')->nullable();
+            $table->string('password');
+            $table->boolean('status')->default(1);
+            $table->integer('points')->default(0);
+            $table->timestamps(); //created_at , updated_at
+        });
+
+* now to save this table into the database 
+   >> write the command " php artisan migrate " 
+
+*  now if somehow we think we have did any mistake and now we want to go back to the prevous migrated state 
+	>> write the command " php artisan migrate:rollback "
+				in our case it will remove the table from th database 
+
+* if we want to refresh all the migrations 
+	>> write the command " php artisan migrate:refresh "
+	            it will delete all the tables and again add it
+
+* if we want to add new column into the table 
+	>> write the command " php artisan make:migration add_columns_to_(tablename) "
+					example: php artisan make:migration add_columns_to_customers_table
+
+					now >>
+					    public function up()
+						{
+							Schema::table('customers', function (Blueprint $table) {
+            
+            					$table->string('country' , 50)->nullable()->after('address');
+            					$table->string('state' , 50)->nullable()->after('address');
+        					});
+    					}
+
+				after that type the command >> "php artisan migrate"
+
+Now it will create two new columns in the table 

@@ -1,0 +1,9 @@
+its same thing like components in react 
+
+we need to type the command : php artisan make:component Input
+
+It will make the component in sereval locations 
+>>
+1. app > View > Components > Input.php
+
+2. resources > views > components > input.blade.php

@@ -1,0 +1,6 @@
+after follwing the code :
+
+	when we make a folder in the lange folder >> 
+			or
+	wehn we do any odification in the config > app.php file
+		then type this command :  php artisan config:cache

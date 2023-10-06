@@ -1,0 +1,5 @@
+Layout Blade Directives 
+
+@yield directive is used to display the contents of a given section 
+the @section directive , defines a section of content.
+the @extends blade directive to specify which layout the child view should 'inherit'.

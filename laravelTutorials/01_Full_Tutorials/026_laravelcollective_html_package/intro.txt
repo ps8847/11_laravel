@@ -1,0 +1,2 @@
+go to the recently created template website folder and paaste the follwing command >>
+	>> composer require laravelcollective/html

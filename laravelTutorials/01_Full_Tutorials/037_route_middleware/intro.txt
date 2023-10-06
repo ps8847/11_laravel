@@ -1,0 +1,39 @@
+Route middleware : 
+
+* if you would like to assign middleware to specific routes , you should first assign the middleware a key in your application's app/Http/Kernel.php
+* if $routeMiddlewre property of this class contains entries for the middleware included with laravel.
+
+here we are using the same middleware used in previous tutorial ::
+
+in the kernal.php
+
+write the follwing code 
+
+    protected $routeMiddleware = [
+        'auth' => \App\Http\Middleware\Authenticate::class,
+        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
+        'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+        'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
+        'signed' => \App\Http\Middleware\ValidateSignature::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+
+		
+        'guard' => \App\Http\Middleware\WebGuard::class
+    ];
+
+and in the WebGuard.php file add this code :
+
+	public function handle(Request $request, Closure $next)
+		{
+			if(session()->has('user_id')){
+				return $next($request);
+			}else{
+				return redirect('no-access');
+			}
+		}
+

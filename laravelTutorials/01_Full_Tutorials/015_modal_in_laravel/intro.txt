@@ -1,0 +1,60 @@
+we will learn ...
+
+* what is model 
+* how to create a model 
+* connecting model with tables 
+
+
+Models >>
+
+* models are class based php files 
+* laravel includes eloquent , an object-relational mapper (ORM) that makes it enjoyable to interact with your database .
+		>> it gives very simple functions for create,update,delete and even for joins in a very easy manner .
+* Each database table has a corresponding "Model" that is used to interact with the table.
+
+
+Command to make model 
+
+>> php artisan make:model <ModelName>
+	this command will make a modal in the app > models > ...
+
+	now in that file write the folliwng code :
+
+	<?php
+
+		namespace App\Models;
+
+		use Illuminate\Database\Eloquent\Factories\HasFactory;
+		use Illuminate\Database\Eloquent\Model;
+
+		class Customer extends Model
+		{
+			use HasFactory;
+			protected $table = 'customers';
+			protected $primaryKey = 'customer_id';
+		}
+
+>> Now add some dummy data into the table 
+
+>>  after that in the web.php 
+	write the code as :
+
+	<?php
+
+		use Illuminate\Support\Facades\Route;
+		use App\Models\Customer;
+
+		Route::get('/customer' , function () {
+			$customers = Customer::all();
+			echo "<pre>";
+			//print_r($customers);
+			print_r($customers->toArray());
+		});
+
+
+Bonus : 
+
+if we want to make Both the 
+	>> Migration file and Model 
+
+	the command is " php artisan make:model Product --migration "

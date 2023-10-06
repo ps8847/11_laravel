@@ -1,0 +1,5 @@
+go to the terminal of any one the app and type the follwing cmmand >> 
+
+ php artisan serve --port=30
+
+The port can be Any Port....

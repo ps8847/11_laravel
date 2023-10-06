@@ -1,0 +1,27 @@
+steps 1: 
+	we will create a new application here in this folder 
+	by : 'laravel new services'
+
+step 2:
+	now we need a template ,, for that >>
+	1. click on the link : https://templatemo.com/tm-583-festava-live
+	2. click on download >>
+		extract it 
+		that's it..
+	3. Now simply copy the html files of the template and make a folder in the 
+			resources > view >>  make a folder frontend and Paste all those here.
+
+			now rename the pasted file as >> filename_.blade.php
+
+	4. now copy all the assets and paste them in the public folder >> make a folder again named as frontend and paste all inside that.
+
+	5. after that make controllers for the files you pasted at Viewsdirectory 
+	example :  php artisan make:Controller frontend\TicketController
+
+	6.Now we will create layout 
+
+	in the resource > view > frontend 
+		directory
+		make three files as >> main.blade.php , header.blade.php , footer.blade.php
+
+	after that just follow the way of the code 

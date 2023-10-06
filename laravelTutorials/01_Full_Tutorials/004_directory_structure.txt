@@ -1,0 +1,89 @@
+app > Console > kernel.php
+
+It cN BE USED TO CTREATE YOUR OWN COMMANDS 
+
+--------------------------------------------
+
+app > Exception > Handler.php 
+
+it can be used to create the custom error handling functions 
+
+---------------------------------------------
+
+app > Http > Controllers
+
+it will be used very much , it creates the Controllers for the paths defiened in the application
+
+--------------------------------------------
+
+app > Http > Middleware
+
+it acts as a guard
+
+---------------------------------------------
+
+app > Http > Models > User.php 
+
+it will create the tables for our project
+
+----------------------------------------------
+
+app > Http > Providers 
+
+it provides all the services e want to use externaly or internally 
+
+-----------------------------------------------
+
+bootstrap 
+
+it will make the app fast 
+
+------------------------------------------------
+
+config 
+
+it will contain all the configuaration files 
+
+-------------------------------------------------
+
+database > migration 
+
+it wsill hepl us to make the tables from here from from the dataabse 
+
+--------------------------------------------------
+
+factories , seeders 
+
+it will give dummy data for the testing of our tables 
+
+---------------------------------------------------
+
+public 
+
+it contains the first file which will be loadedin the laravel 
+
+---------------------------------------------------
+
+route 
+
+we can define our routes here 
+
+----------------------------------------------------
+
+resources 
+
+we can add our css/js or any source of file in this directory 
+
+----------------------------------------------------
+
+storage 
+
+for storage purpose 
+
+----------------------------------------------------
+
+tests 
+
+for unit testing 
+
+-----------------------------------------------------

@@ -1,0 +1,45 @@
+to use the softdelete we need some modifications in our Model : 
+
+step 1 :
+
+* Namespace : use Illuminate\Database\Eloquent\SoftDeletes 
+
+step 2 :
+* Invoking: use SoftDeletes;
+
+step 3 :
+write the command in the terminal : 
+	php artisan make:migration add_deleted_at_to_customers_table
+
+step 4: 
+now go to the migration file created an write the code as :
+
+    public function up()
+    {
+        Schema::table('customers', function (Blueprint $table) {
+            //
+            $table->softDeletes();
+        });
+    }
+
+    public function down()
+    {
+        Schema::table('customers', function (Blueprint $table) {
+            //
+            $table->dropSoftDeletes();
+        });
+    }}
+
+step 5:
+	type the command >> php artisan migrate
+
+step 6:
+	now we will delete any data from the screen >> it will be deleted ,,but............. it will not deleted from the database .
+
+step 7: 
+	to handle this : follow the code in the files......
+* Other important functions:
+	withTrashed()
+	onlyTrashed()
+	restore()
+	forceDelete()

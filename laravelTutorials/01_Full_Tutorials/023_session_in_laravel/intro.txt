@@ -1,0 +1,90 @@
+Session helper in laravel 
+
+* Retrieving data:
+	$request->session()->get('key')
+	$session('key)
+
+* Retrieveing All Session Data 
+	$request->session()->all()
+	session()->all()
+
+* Determining if an item exists in this session 
+	$request->session()->has('key')
+	session()->key('key')
+
+* Storing data :
+	$request->session()->put('key' , 'value');
+	session(['key' => 'value']);
+
+* flash Data:
+	$request->session()->flash('status' , 'Task was successful!');
+	session()->all()
+
+* Deleting Data:
+	$request->session()->forget('key');
+	$request->session()->forget(['key1' , 'key2']);
+	$request->session()->flush();
+
+
+
+****************************************************
+
+for the implementation we will go to the web.php and will write 
+
+
+use Illuminate\Http\Request;
+
+Route::get('get-all-session' , function(){
+    $session = session()->all();
+    p($session);
+});
+
+Route::get('set-session' , function(Request $request){
+    $request->session()->put('user_name' , 'prince');
+    $request->session()->put('user_id' , '123');
+    return redirect('get-all-session');
+});
+
+Route::get('set-flash-session' , function(Request $request){
+    
+    $request->session()->flash('status' , 'success');
+    return redirect('get-all-session');
+});
+
+Route::get('destroy-session' , function(){
+
+    /*
+    //method 1
+    session()->forget('user_name');
+    session()->forget('user_id');
+    */
+
+    /*
+    //method 2
+    session()->forget(['user_name' , 'user_id']);
+    return redirect('get-all-session');
+    */
+});
+
+
+
+///////////////////////////////////////////////
+
+to get the session data we can use >>
+
+ <title>{{session()->get('user_name')}}</title>
+
+ <a class="navbar-brand" href="#">
+	@if(session()->has('user_name'))
+		{{session()->get('user_name')}}
+	@else
+		Guest
+	@endif
+ </a>
+
+
+
+ //////////////////////////////////////////////
+
+ Bonus : if we want to change the life time of the session we can change it from 
+		.env file or from config > session

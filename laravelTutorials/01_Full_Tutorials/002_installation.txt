@@ -1,0 +1,28 @@
+Steps to follow : 
+
+* Installation of PHP local server xampp 
+
+* Installation of composer 
+	>> getcomposer.org/download/
+	>> (give it the path of php.exe file on D:\xampp\php\php.exe)
+	>> check it on command prompt by typing >> " composer "
+
+* Installation of Laravel Globally 
+	>> go to google on laravel.com
+		now we will install the installer of the LARAVEL BY BELOW COMMAND : 
+	>> now type the command on cmd >> "composer global require laravel/installer"
+	that;s it.
+
+* Creating a new project
+	>> now simply we will make a laravel project 
+	go to the Path >> " D:\xampp\htdocs "
+	command is "laravel new myLaravelPro"
+* Installation of a code editor (VS Code)
+	>> laravel new myLaravelPro
+		it will create a new laravel project
+	>> Now to check that laravel project is created or not ? 
+			Go to the 
+				D:\xampp\htdocs\myLaravelPro
+
+			Now open the cmd on that location 
+			and type " php artisan serve "

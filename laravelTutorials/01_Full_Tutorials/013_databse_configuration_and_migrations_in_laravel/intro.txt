@@ -1,0 +1,17 @@
+* first go to the xampp databse and create any empty databse 
+* now in the .env file 
+	
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel_tutes
+DB_USERNAME=root
+DB_PASSWORD=
+
+* Migration => it is a technique in the laravel. which is used to make the tables / add /update / crreate new column in that table through laravel.
+
+now to work with migration >
+
+>> php artisan config:Cache
+>> php artisan migrate 
+		Now you will see some tables inside the database you created earlier .

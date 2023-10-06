@@ -1,0 +1,77 @@
+what is middleware ? 
+
+* middleware provide a conveneint mechsanisn for inspecting and filtering Http requests entering your application.
+* to create a new middleware , use the make : middleware Artisan command 
+* e.g : php artisan make:middleware WebGuard
+
+Global middleWare ? 
+
+* if you want a middleware to run during every Http request to your application , list the middleware class in the $middleware property of your app/Http/Kernel.php
+
+
+
+In this explanation we will learn about global middleware : 
+
+
+
+Implementstion : 
+
+php artisan make:middleware WebGuards
+	we will write some code inside it like :
+
+	public function handle(Request $request, Closure $next)
+		{
+			echo "Hello !";
+			return $next($request);
+		}
+
+	now , we will add this line/code in the kernel.php 
+
+	protected $middleware = [
+        // \App\Http\Middleware\TrustHosts::class,
+        \App\Http\Middleware\TrustProxies::class,
+        \Illuminate\Http\Middleware\HandleCors::class,
+        \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
+        \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
+        \App\Http\Middleware\TrimStrings::class,
+        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+
+
+        \App\Http\Middleware\WebGuard::class,
+    ];
+
+	type the command : php artisan config:cache
+Now . from now on >> wheneevr we will access any route ,, the page will show "hello" on top
+
+***********************************************************************************************
+
+now if we want to pass the data 
+
+    public function handle(Request $request, Closure $next)
+    {
+        echo $request->age;
+        return $next($request);
+    }
+
+in the url type >> http://127.0.0.1:8000/?age=30
+
+	it will show the age now..
+
+
+*************************************************************************************************
+
+now if we want a conditional middleware 
+
+    public function handle(Request $request, Closure $next)
+    {
+        echo $request->age;
+        if($request->age < 18){
+            echo "You are not allowed tyo access the resources";
+            die;
+        }
+        return $next($request);
+    }
+
+in the url type >> http://127.0.0.1:8000/?age=15
+
+	it will show the age now..

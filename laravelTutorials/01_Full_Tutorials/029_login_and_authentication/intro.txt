@@ -1,0 +1,97 @@
+Step 1: Create Laravel App
+		type the command : laravel new project_name 
+			https://codeanddeploy.com/blog/laravel/laravel-8-authentication-login-and-registration-with-username-or-email
+
+Step 2: Connect to Database
+		
+		DB_CONNECTION=mysql
+		DB_HOST=127.0.0.1
+		DB_PORT=3306
+		DB_DATABASE=loginRegistrationSystem
+		DB_USERNAME=root
+		DB_PASSWORD=
+
+Step 3 : go to the >> database/migrations/2014_10_12_000000_create_users_table.php
+	in that file 
+
+	do these modifications :
+
+	Schema::create('users', function (Blueprint $table) {
+		$table->id();
+		$table->string('name')->nullable();
+		$table->string('email')->unique();
+		$table->string('username')->unique();
+		$table->timestamp('email_verified_at')->nullable();
+		$table->string('password');
+		$table->rememberToken();
+		$table->timestamps();
+	});
+
+	Now write the command : php artisan migrate
+
+Step 4: Setup Model
+	Next, we need to modify our App\Models\User.php model and add the username as fillable. See the updated code in the following:
+
+	protected $fillable = [
+		'name',
+		'email',
+		'username',
+		'password',
+	];
+
+	public function setPasswordAttribute($value)
+		{
+		$this->attributes['password'] = bcrypt($value);
+		}
+
+Step 5: Setup Registration Controller
+		type the command below :  php artisan make:controller RegisterController
+
+		then follow the code of the file >> App\Http\Controllers\Registercontroller
+
+Step 6: Setup Registration Request
+		php artisan make:request RegisterRequest
+
+		then follow the code of the file >> App\Http\Requests\RegisterRequests
+
+Step 7: Setup Login Controller
+		execute the command : php artisan make:controller LoginController
+
+		then follow the code of the file >> App\Http\Controllers\LoginController
+
+Step 8: Setup Login Request
+		execute the command : php artisan make:request LoginRequest
+
+		then follow the code of the file >> App\Http\Requests\LoginRequest
+
+Step 9 : Setup Logout Controller
+		execute the command : php artisan make:controller LogoutController
+
+		then follow the code of the file >> App\Http\Controllers\LogoutController
+
+Step 10: Setup Home Controller
+		execute the command : php artisan make:controller HomeController
+
+		then follow the code of the file >> App\Http\Controllers\HomeController
+
+step 11: Setup Routes
+		watch this code in web.php 
+
+step 12: Setup Our Views
+		all this cdoe is inside the View folder of resource directory
+
+step 13 : Now Setup the bootstrap 
+
+		public/assets/bootstrap/css/bootstrap.min.css
+		public/assets/bootstrap/js/bootstrap.bundle.min.js
+
+step 14 : 
+	Now our Laravel authentication with username or email login is ready but we have another small customization the redirect default after login. Which we can found in App\Providers\RouteServiceProvider.php
+
+	modify this -> 
+	
+	public const HOME = '/';
+
+thats it 
+
+http://127.0.0.1:8000/

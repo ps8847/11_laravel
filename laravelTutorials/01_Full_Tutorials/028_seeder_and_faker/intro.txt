@@ -1,0 +1,69 @@
+seeder : 
+	it is a tool which enters some fake data into the database.
+
+	to make this type the command : php artisan make:seeder CustomerSeeder
+
+	we can check this file at database > seeeders 
+
+	Now add this code into the customerSeeder >>
+
+	>>     public function run()
+				{
+					$customer = new Customer;
+					$customer->user_name = 'prince';
+					$customer->email = 'ps789650@gmail.com';
+					$customer->gender = 'M';
+					$customer->address = 'ABCD NAGAR';
+					$customer->state = 'punjab';
+					$customer->country = 'india';
+					$customer->dob = now();
+					$customer->password = '12345';
+					$customer->Save();
+				}
+
+	>>	   public function run()
+				{
+					$this->call([
+						CustomerSeeder::class 
+					]);
+				}
+
+	After this write this command >> php artisan db:seed 
+
+	that command will add the data into the table ,,,
+
+Faker : 
+
+	use Faker\Factory as faker;
+	
+	 public function run()
+    {
+        //wih faker
+        $faker = Faker::create();
+        $customer = new Customer;
+        $customer->user_name = $faker->name;
+        $customer->email = $faker->email;
+		$customer->gender = 'M';
+		$customer->address = $faker->address;
+		$customer->state = $faker->state;
+		$customer->country = $faker->Country;
+		$customer->dob = $faker->date;
+		$customer->password = $faker->password;
+        $customer->Save();
+
+        //to run the faker again and again
+
+        $faker = Faker::create();
+        for($i = 1; $i <=100; $i++){
+            $customer = new Customer;
+            $customer->user_name = $faker->name;
+            $customer->email = $faker->email;
+            $customer->gender = 'M';
+            $customer->address = $faker->address;
+            $customer->state = $faker->state;
+            $customer->country = $faker->Country;
+            $customer->dob = $faker->date;
+            $customer->password = $faker->password;
+            $customer->Save();
+        }
+    }

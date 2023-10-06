@@ -1,0 +1,16 @@
+it is used to make customer functions to call at anytimr from anywhere 
+
+ * we will kake a file in the app directory >> named as helper.php ,,, we can give it any name
+
+* now go to the composer.json 
+	and add this code there : 
+		 ............
+		 "autoload": {
+        "files": ["app/helper.php"],
+        "psr-4": {
+            "App\\": "app/",
+            "Database............
+
+* now in terminal type the command : composer dump-autoload
+
+*  after that you can follow the logics of code of the files 

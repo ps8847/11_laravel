@@ -1,0 +1,12 @@
+Why laravel ? 
+
+* MVC Support and object oriented approach
+* build-in authentication and authorization
+* Packaging system
+* multiple file system
+* artisian console
+* eloquent ORM
+* templating engine
+* task scheduling
+* events and broadcasting
+* testing

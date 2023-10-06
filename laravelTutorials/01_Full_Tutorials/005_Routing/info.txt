@@ -1,0 +1,6 @@
+we will learn 
+
+* Routing Files in laravel 
+* Routing Methods 
+* Configuring custom routes 
+* Handling query with routes

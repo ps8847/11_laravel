@@ -1,0 +1,37 @@
+we will leanr 
+
+* what is controller 
+* how to crreate a controller 
+* how to call a controller from routes 
+
+Controllers >>
+
+Controllers are class based php files.
+Controllers can group related request handling logic into a single class
+it can pass the data from view to database
+
+Types of controllers:
+	Basic Controllers 
+	Single Action Controllers 
+	Resource Controllers >> CRUD
+
+
+Command to make Controllers :
+
+Basic Controller : php artisan make:controller ControllerName
+
+Single Action Controller: php artisan make:controller ControllerName --invokable
+
+Resource Controller : php arisan make:controller ControllerName --resource
+
+
+Actions handled by Resource Controller 
+Method    |    URL                  |     Action    |    Route Name 
+
+GET       |    /photos              |     index     |    photos.index
+GET       |    /photos/create       |     create    |    photos.create
+POST      |    /photos              |     store     |    photos.store
+GET       |    /photos/{photo}      |     show      |    photos.show
+GET       |    /photos/{photo}/edit |     edit      |    photos.edit
+PUT/PATCH |    /photos/{photo}      |     update    |    photos.update
+DELETE    |    /photos/{photo}      |     destroy   |    photos.destroy

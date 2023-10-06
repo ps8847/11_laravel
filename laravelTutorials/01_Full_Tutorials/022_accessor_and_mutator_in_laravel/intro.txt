@@ -1,0 +1,33 @@
+what is mutator ? 
+
+* a mutator transforms an eloquent attribute value when it is set.
+
+* define a set{Attribute}Attribute method on your model where {Attribute} is the "studly" cased name of the column you wish to access .
+
+to perform mutator >>>
+
+go to the model file and write the follwing code for the field you want to mutate the data ,,, in our case we will setthename 
+
+>>     public function setNameAttribute($value){
+        $this->attributes['name'] = ucwords($value);
+    }
+
+	afte this code ,,, add some data into the table and you'll see it will automaticslly uppaer case the value of the name field.
+
+>> but it acts different for the field namedwith underscore : example a table's fieelf name is >> user_name 
+	for that it will be: 
+
+	1. we will modify our existing table's 'Name' column into 'user_name'
+	2. Now , we will change its migration file also .. just replace the name with user_name
+	3. now change the name into user_name in the view file 
+	4. finally write this code in the model 
+
+	    public function setUserNameAttribute($value){
+        $this->attributes['user_name'] = ucwords($value);
+    }
+
+
+What is accessor ? 
+
+* an accessor transforms an eloquent attribute value when it is accessed.
+* create a get{Attribute}Attribute method on your model where {Attribute} is the "study" cased name of the columnyou wish to access.

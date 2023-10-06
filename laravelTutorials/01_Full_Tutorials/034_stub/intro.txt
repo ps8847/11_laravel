@@ -1,0 +1,56 @@
+it's the functuonality in the php >> it contains the meta data of our spp 
+
+it basically contains all the structures of the files we create in laravel 
+
+to see this >>
+		first we will make a controller 
+		: php artisan make:controller DemoController2
+
+		it will make a controller ,,,but  >> how it got to know that it needs to follow this structure only ..
+
+to know all stubs type ythis command 
+		: php artisan stub:publish
+
+it will show you all the stubs avaibale 
+
+
+>> now if you want that the default controller should containa default functon there as name of "prince"
+
+follow the steps :
+
+step-1 : in the "controller.plain.stub" file 
+			make any changes >> example :
+			<?php
+
+			namespace {{ namespace }};
+
+			use {{ rootNamespace }}Http\Controllers\Controller;
+			use Illuminate\Http\Request;
+
+			class {{ class }} extends Controller
+			{
+				//
+				public function prince(){
+					
+				}
+			}
+
+step-2 : php artisan make:controller DemoController3 
+		this will create a controller looking like this :
+
+			<?php
+
+			namespace App\Http\Controllers;
+
+			use Illuminate\Http\Request;
+
+			class DemoController3 extends Controller
+			{
+				//
+				public function prince(){
+					
+				}
+			}
+
+that's it .
+

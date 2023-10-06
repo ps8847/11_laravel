@@ -1,0 +1,28 @@
+In the customer.blade.php 
+		
+		write this code in below section
+	<div class="row">
+		{{ $customers->links() }}
+	</div>
+
+In the Controller we need to provide paginate function 
+
+	public function view(Request $request){
+		$search = $request['search'] ?? "";
+		if($search != ""){
+			$customers = Customer::where('user_name', 'LIKE' , "%$search%")->orWhere('email', 'LIKE' , "%$search%")->paginate(5);
+		}else{
+			$customers = Customer::paginate(5);
+		}
+		$data = compact('customers' , 'search');
+		return view('customer-view')->with($data);
+	}
+
+In the End in the app\AppServiceProvider we will Add the folllwing code 
+use Illuminate\Pagination\Paginator;
+
+	    public function boot()
+    {
+        //
+        Paginator::useBootstrapFive();
+    }

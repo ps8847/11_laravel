@@ -1,0 +1,9 @@
+* to render the complete stack contents , pass the name of the stack to the @stack directive : 
+* @push and @endpush is used to push data into the stack 
+
+by continuing the 007_blade_layouts 
+		>> we will add @stack('title') in the header.blade.php file and the 
+		@push('title')
+			<title> Home </title>
+		@endpush
+		in the othe files

@@ -1,0 +1,14 @@
+in the web.php file >>
+
+	Route::group(['prefix' => '/customer'] , function() {
+		Route::get('create' , [CustomerController::class , 'create'])->name('customer.create');
+		Route::get('view' , [CustomerController::class , 'view'])->name('customer.view');
+		Route::get('delete/{id}' , [CustomerController::class , 'delete'])->name('customer.delete');
+		Route::get('edit/{id}' , [CustomerController::class , 'edit'])->name('customer.edit');
+		Route::post('update/{id}' , [CustomerController::class , 'update'])->name('customer.update');
+
+		Route::post('/' , [CustomerController::class , 'store']);
+		Route::get('trash' , [CustomerController::class , 'trash']);
+		Route::get('restore/{id}' , [CustomerController::class , 'restore'])->name('customer.restore');
+		Route::get('force-delete/{id}' , [CustomerController::class , 'forceeDelete'])->name('customer.force-delete');
+	});

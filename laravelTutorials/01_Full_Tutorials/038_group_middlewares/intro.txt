@@ -1,0 +1,58 @@
+middleware groups : 
+
+* sometimes you may want to group several middleware under a single key to make them easier to assign to routes. you may accompolish this using the $middlewareGroups property to your Http kernal.
+* Laravel comes with web and api middleware groups that contain common middleware you may want to apply to your web and API route
+
+IMPLEMENTATION : 
+
+: php artisan make:middleware LoggedInCheck
+: php artisan make:middleware AgeCheck
+
+Now in the AgeCheck middleware write follwing code :
+
+    public function handle(Request $request, Closure $next)
+    {
+        if($request->age >= 18){
+            return $next($request);
+        }else{
+            return redirect('/no-access');
+        }
+    }
+
+Now in the LoggedInCheck middleware write follwing code :
+
+    public function handle(Request $request, Closure $next)
+	{
+		if(session()->has('user_id')){
+			return $next($request);
+		}else{
+			return redirect('/no-access');
+		}
+	}
+
+
+In the kernel.php write the folliwng code : 
+
+	protected $middlewareGroups = [
+        'web' => [
+            \App\Http\Middleware\EncryptCookies::class,
+            \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            \App\Http\Middleware\VerifyCsrfToken::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+
+        'api' => [
+            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            'throttle:api',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
+
+
+		
+        'guard' => [
+            \App\Http\Middleware\AgeCheck::class,
+            \App\Http\Middleware\LoggedInCheck::class,
+        ]
+    ];
